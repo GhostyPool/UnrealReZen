@@ -43,12 +43,12 @@ namespace UnrealReZen.Core
 
             fdata.PackFilesToUcas(m, dir, outFilename, compression, depver);
 
-            if (aes.KeyString != Constants.DefaultAES)
+            /*if (aes.KeyString != Constants.DefaultAES)
             {
                 var b = File.ReadAllBytes(Path.ChangeExtension(outFilename, ".ucas"));
                 var encrypted = CryptographyHelpers.EncryptAES(b, aes.Key);
                 File.WriteAllBytes(Path.ChangeExtension(outFilename, ".ucas"), encrypted);
-            }
+            }*/
 
             var utocBytes = fdata.ConstructUtocFile(compression, aes);
             File.WriteAllBytes(outFilename, utocBytes);
@@ -230,10 +230,10 @@ namespace UnrealReZen.Core
                 newContainerFlags |= (byte)EIoContainerFlags.CompressedContainerFlag;
             }
 
-            if (AESKey.KeyString != Constants.DefaultAES)
+            /*if (AESKey.KeyString != Constants.DefaultAES)
             {
                 newContainerFlags |= (byte)EIoContainerFlags.EncryptedContainerFlag;
-            }
+            }*/
 
             var compressedBlocksCount = 0;
             var containerIndex = 0;
